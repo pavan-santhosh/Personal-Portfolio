@@ -157,3 +157,31 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// open project code link when clicking the eye icon
+const projectIconButtons = document.querySelectorAll('.project-item-icon-box');
+
+projectIconButtons.forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    // prevent any parent anchor default navigation
+    e.stopPropagation();
+    e.preventDefault();
+
+    // find the nearest project item and its data-code attribute
+    const projectItem = btn.closest('.project-item');
+    const codeUrl = projectItem ? projectItem.dataset.code : null;
+
+    if (codeUrl) {
+      window.open(codeUrl, '_blank', 'noopener');
+      return;
+    }
+
+    // fallback: if the card anchor has an href, open that
+    const anchor = btn.closest('li').querySelector('a');
+    if (anchor && anchor.href) {
+      window.open(anchor.href, '_blank', 'noopener');
+    }
+
+  });
+});

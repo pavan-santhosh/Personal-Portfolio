@@ -578,6 +578,30 @@ main {
   scroll-snap-type: inline mandatory;
 }
 
+/* Make contact area text readable: force darker text for links/time/address, button label and form inputs */
+.contact .contact-info :is(.contact-link, time, address) {
+  color: black !important;
+}
+
+.contact .form-title,
+.contact .contact-title {
+  color: black !important;
+}
+
+.contact .form-btn {
+  color: black !important;
+}
+
+.contact .form-input,
+.contact textarea.form-input {
+  /* ensure input/textarea text is visible when filling the form */
+  color: #222 !important;
+}
+
+.contact .form-input::placeholder {
+  color: #7a7a7a !important;
+}
+
 .testimonials-item {
   min-width: 100%;
   scroll-snap-align: center;
@@ -772,6 +796,11 @@ main {
  */
 
 .timeline { margin-bottom: 30px; }
+
+/* extra spacing when two timeline sections appear consecutively (e.g. Experience then Education) */
+.resume .timeline + .timeline {
+  margin-top: 28px;
+}
 
 .timeline .title-wrapper {
   display: flex;
